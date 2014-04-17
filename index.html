@@ -7,6 +7,8 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
 <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css' rel='stylesheet' />
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
 <style>
   body { margin:0; padding:0; }
@@ -19,6 +21,10 @@
 <script>
 var map = L.mapbox.map('map', 'anderoy.hkgnh5f3')
     .setView([40, -74.50], 9);
+var url="https://portal.excellentschoolsdetroit.org/api/1.0/views/meap_2012.json/?filters[bcode]=4066";
+$.get(url, function(schools) {
+  console.log(schools);
+});
 </script>
 
 </body>
