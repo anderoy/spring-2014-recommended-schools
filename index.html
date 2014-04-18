@@ -40,10 +40,20 @@ $.ajax({
 end comment-->
 
 <script type="text/javascript">
-  function init() {
-  Tabletop.init( { key: '0AtLDi9SHMwnrdDVMVWhfUVVNdFBMSlprc0x1YnQ1Vnc',
-                   callback: function(data, tabletop) { console.log(data) },
-                   simpleSheet: true } )
+  document.addEventListener('DOMContentLoaded', function() {
+    var URL = "0AtLDi9SHMwnrdDVMVWhfUVVNdFBMSlprc0x1YnQ1Vnc"
+    Tabletop.init( { key: URL, callback: showInfo, simpleSheet: true } )
+  })
+  
+  function showInfo(data) {
+    var optionsJSON = ["schoolname", "scorecard-url", "operatedby", "overallgrade"]
+    var template = "<h3><a href='{{scorecard-url}}' target='_blank'> {{schoolname}}</a></h3>"
+                 + "<p>Operated by: {{operatedby}}</p>"
+                 + "<h2>Overall Grade: {{overallgrade}}</h2>"
+    var geoJSON = Sheetsee.createGeoJSON(data, optionsJSON)
+    var map = L.mapbox.map('map', 'anderoy.i0p181ni')
+    .setView([-83, 42], 9);
+    var markerLayer = Sheetsee.addMarkerLayer(geoJSON, map, template)
   }
 </script>
 
