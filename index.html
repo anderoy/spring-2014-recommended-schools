@@ -9,6 +9,7 @@
 <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css' rel='stylesheet' />
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type='text/javascript' src='//jlord.github.io/sheetsee.js/js/sheetsee.js'></script>
 
 <style>
   body { margin:0; padding:0; }
@@ -18,6 +19,8 @@
 <body>
 
 <div id='map'></div>
+
+<!-- hold for potential later use
 <script>
 var map = L.mapbox.map('map', 'anderoy.hkgnh5f3')
     .setView([-83, 42], 9);
@@ -32,6 +35,25 @@ $.ajax({
     console.log(error);
   }
 });
+</script>
+end comment-->
+
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    var URL = "0AtLDi9SHMwnrdDVMVWhfUVVNdFBMSlprc0x1YnQ1Vnc"
+    Tabletop.init( { key: URL, callback: showInfo, simpleSheet: true } )
+  })
+
+  function showInfo(data) {
+    var optionsJSON = ["schoolname", "operatedby", "scorecard-url"]
+    var template = "<ul><li><a href='{{scorecard-url}}' target='_blank'>"
+                  + "{{schoolname}}</a></li>"
+                  + "<li><h4>{{operatedby}}</h4></li></ul>"
+    var geoJSON = Sheetsee.createGeoJSON(data, optionsJSON)
+    var map = Sheetsee.loadMap("map")
+    Sheetsee.addTileLayer(map, 'examples.map-20v6611k')
+    var markerLayer = Sheetsee.addMarkerLayer(geoJSON, map, template)
+  }
 </script>
 
 </body>
