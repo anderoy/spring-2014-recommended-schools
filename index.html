@@ -21,7 +21,7 @@
 <script>
 var map = L.mapbox.map('map', 'anderoy.hkgnh5f3')
     .setView([40, -74.50], 9);
-var url="https://portal.excellentschoolsdetroit.org/api/1.0/views/meap_2012.json/?filters[bcode]=880";
+var url="https://portal.excellentschoolsdetroit.org/api/1.0/views/meap_2012.jsonp/?filters[bcode]=880";
 $.get(url, function(schools) {
   console.log(schools);
 });
