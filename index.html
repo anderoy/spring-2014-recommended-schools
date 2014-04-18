@@ -46,11 +46,10 @@ end comment-->
   })
 
   function showInfo(data) {
-    var optionsJSON = ["schoolname", "operatedby", "scorecard-url", "overallgrade", "existingassets"]
     var template = "<h3><a href='{{scorecard-url}}' target='_blank'> {{schoolname}}</a></h3>"
-                  + "<p>Operated by: {{operatedby}}<p>"
-                  + "<h2>Overall Grade: {{overallgrade}}</h2>"
-    var geoJSON = Sheetsee.createGeoJSON(data, optionsJSON)
+                 + "<p>Operated by: {{operatedby}}<p>"
+                 + "<h2>Overall Grade: {{overallgrade}}</h2>"
+    var geoJSON = Sheetsee.createGeoJSON(data)
     var map = L.mapbox.map('map', 'anderoy.i0p181ni')
     .setView([-83, 42], 9);
     var markerLayer = Sheetsee.addMarkerLayer(geoJSON, map, template)
