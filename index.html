@@ -52,8 +52,8 @@ end comment-->
                   + "<p>Operated by: {{operatedby}}<p>"
                   + "<h2>Overall Grade: {{overallgrade}}</h2>"
     var geoJSON = Sheetsee.createGeoJSON(data, optionsJSON)
-    var map = Sheetsee.loadMap("map")
-    Sheetsee.addTileLayer(map, 'anderoy.i0p181ni')
+    var map = L.mapbox.map('map', 'anderoy.hkgnh5f3')
+    .setView([-83, 42], 9);
     var markerLayer = Sheetsee.addMarkerLayer(geoJSON, map, template)
   }
 </script>
