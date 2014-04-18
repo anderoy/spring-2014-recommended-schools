@@ -53,7 +53,7 @@ end comment-->
                  + "<a href='{{scorecard-url}}' target='_blank'>View Scorecard Profile</a></div>"
     var geoJSON = Sheetsee.createGeoJSON(data, optionsJSON)
     var map = L.mapbox.map('map', 'anderoy.i0p181ni')
-    .setView([-83, 42], 7);
+    .setView([-83, 42], 9);
     var markerLayer = Sheetsee.addMarkerLayer(geoJSON, map, template)
     console.log(data)
     console.log(geoJSON)
