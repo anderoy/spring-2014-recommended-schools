@@ -46,9 +46,9 @@ end comment-->
   })
 
   function showInfo(data) {
-    var optionsJSON = data
+    var optionsJSON = ["schoolname", "scorecard-url", "operatedby", "overallgrade"]
     var template = "<h3><a href='{{scorecard-url}}' target='_blank'> {{schoolname}}</a></h3>"
-                 + "<p>Operated by: {{operatedby}}<p>"
+                 + "<p>Operated by: {{operatedby}}</p>"
                  + "<h2>Overall Grade: {{overallgrade}}</h2>"
     var geoJSON = Sheetsee.createGeoJSON(data, optionsJSON)
     var map = L.mapbox.map('map', 'anderoy.i0p181ni')
