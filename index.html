@@ -48,7 +48,7 @@ end comment-->
   function showInfo(data) {
     var optionsJSON = ["schoolname", "operatedby", "scorecard-url", "overallgrade", "existingassets"]
     var template = "<h3><a href='{{scorecard-url}}' target='_blank'> {{schoolname}}</a></h3>"
-                  + "{{existingassets}}"
+                  + "<p>{{existingassets}}</p>"
                   + "<p>Operated by: {{operatedby}}<p>"
                   + "<h2>Overall Grade: {{overallgrade}}</h2>"
     var geoJSON = Sheetsee.createGeoJSON(data, optionsJSON)
