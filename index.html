@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Excellent Schools Detroit's Spring 2014 Recommended K-8 Schools</title>
+
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+<script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css' rel='stylesheet' />
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type='text/javascript' src='//jlord.github.io/sheetsee.js/js/tabletop1.3.3.js'></script>
+<script type='text/javascript' src='//jlord.github.io/sheetsee.js/js/sheetsee.js'></script>
+
+<style>
+  body { margin:0; padding:0; }
+  #map { position:absolute; top:0; bottom:0; width:100%; }
+</style>
+</head>
+<body>
+
+<div id='map'></div>
+
+<!-- hold for potential later use
+<script>
+var map = L.mapbox.map('map', 'anderoy.hkgnh5f3')
+    .setView([-83, 42], 9);
+var url="https://portal.excellentschoolsdetroit.org/api/1.0/views/esd_k8_2013_r1.jsonp/?filters[bcode]=880&callback=?";
+$.ajax({
+  url: url,
+  dataType: 'jsonp',
+  success: function (dater){
+    console.log(dater);
+  },
+  error: function(error){
+    console.log(error);
+  }
+});
+</script>
+end comment-->
+
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    var URL = "0AtLDi9SHMwnrdDVMVWhfUVVNdFBMSlprc0x1YnQ1Vnc"
+    Tabletop.init( { key: URL, callback: showInfo, simpleSheet: true } )
+  })
+  
+  function showInfo(data) {
+    var optionsJSON = ["schoolname", "scorecard-url", "address", "city", "state", "zip"]
+    var template = "<div><h2>{{schoolname}}</h2>"
+                 + "<p>{{address}}</p>"
+                 + "<p>{{city}}, {{state}} {{zip}}</p>"
+                 + "<a href='{{scorecard-url}}' target='_blank'>View Scorecard Profile</a></div>"
+    var geoJSON = Sheetsee.createGeoJSON(data, optionsJSON)
+    var map = L.mapbox.map('map', 'anderoy.i0p181ni')
+    .setView([-83, 42], 9);
+    var markerLayer = Sheetsee.addMarkerLayer(geoJSON, map, template)
+    console.log(data)
+  }
+</script>
+
+</body>
+</html>
