@@ -48,9 +48,11 @@ end comment-->
   function showInfo(data) {
     var optionsJSON = ["schoolname", "scorecard-url", "address", "city", "state", "zip"]
     var template = "<div><h2>{{schoolname}}</h2>"
-                 + "<p>{{address}}</p>"
-                 + "<p>{{city}}, {{state}} {{zip}}</p>"
-                 + "<a href='{{scorecard-url}}' target='_blank'>View Scorecard Profile</a></div>"
+                 + "<em>{{address}}, {{city}}, {{state}} {{zip}}</em></br>"
+                 + "<strong>{{grades}}</strong></br>"
+                 + "Operated by: {{operatedby}}</br>"
+                 + "<a href='{{scorecard-url}}' target='_blank'>View Scorecard Profile</a>"
+                 + "<h3>OVerall grade: {{overallgrade}}</h3></div>"
     var geoJSON = Sheetsee.createGeoJSON(data, optionsJSON)
     var map = L.mapbox.map('map', 'anderoy.i0p181ni')
     .setView([-83, 42], 9);
