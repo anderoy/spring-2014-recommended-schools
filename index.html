@@ -46,13 +46,13 @@ end comment-->
   })
   
   function showInfo(data) {
-    var optionsJSON = ["schoolname", "scorecard-url", "address", "city", "state", "zip"]
+    var optionsJSON = ["schoolname", "scorecard-url", "address", "city", "state", "zip", "grades", "operatedby", "overallgrade"]
     var template = "<div><h2>{{schoolname}}</h2>"
+                 + "<strong>{{grades}}</strong> Operated by: {{operatedby}}</br>"
                  + "<em>{{address}}, {{city}}, {{state}} {{zip}}</em></br>"
-                 + "<a href='{{scorecard-url}}' target='_blank'>View Scorecard Profile</a>"
-                 + "<h4>OVerall grade: {{overallgrade}}</h4></div>"
-    var geoJSON = Sheetsee.createGeoJSON(data, optionsJSON)
-    var map = L.mapbox.map('map', 'anderoy.i0p181ni')
+                 + "<strong>Overall grade: {{overallgrade}}</strong>"
+                 + "<a href='{{scorecard-url}}' target='_blank'>View Scorecard Profile</a></div>"
+                 
     .setView([-83, 42], 9);
     var markerLayer = Sheetsee.addMarkerLayer(geoJSON, map, template)
     console.log(data)
