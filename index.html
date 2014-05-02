@@ -21,24 +21,6 @@
 
 <div id='map'></div>
 
-<!-- hold for potential later use
-<script>
-var map = L.mapbox.map('map', 'anderoy.hkgnh5f3')
-    .setView([-83, 42], 9);
-var url="https://portal.excellentschoolsdetroit.org/api/1.0/views/esd_k8_2013_r1.jsonp/?filters[bcode]=880&callback=?";
-$.ajax({
-  url: url,
-  dataType: 'jsonp',
-  success: function (dater){
-    console.log(dater);
-  },
-  error: function(error){
-    console.log(error);
-  }
-});
-</script>
-end comment-->
-
 <script type="text/javascript">
   document.addEventListener('DOMContentLoaded', function() {
     var URL = "0AtLDi9SHMwnrdDVMVWhfUVVNdFBMSlprc0x1YnQ1Vnc"
@@ -46,16 +28,19 @@ end comment-->
   })
   
   function showInfo(data) {
-    var optionsJSON = ["schoolname", "scorecard-url", "address", "city", "state", "zip"]
+    var optionsJSON = ["schoolname", "scorecard-url", "address", "city", "state", "zip", "overallgrade", "operatedby", "grades"]
     var template = "<div><h2>{{schoolname}}</h2>"
-                 + "<p>{{address}}</p>"
-                 + "<p>{{city}}, {{state}} {{zip}}</p>"
+                 + "<p><em>{{address}}, {{city}}, {{state}} {{zip}}</em></p>"
+                 + "<p>testing</p>"
+                 + "<p>testing 2</p>"
                  + "<a href='{{scorecard-url}}' target='_blank'>View Scorecard Profile</a></div>"
     var geoJSON = Sheetsee.createGeoJSON(data, optionsJSON)
     var map = L.mapbox.map('map', 'anderoy.i0p181ni')
     .setView([-83, 42], 9);
     var markerLayer = Sheetsee.addMarkerLayer(geoJSON, map, template)
     console.log(data)
+    console.log(optionsJSON)
+    console.log(geoJSON)
   }
 </script>
 
